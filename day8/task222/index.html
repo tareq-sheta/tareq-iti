@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      .type {
+        margin-left: 20px;
+        margin-right: 5%;
+        float: left;
+      }
+      .add-text {
+        float: left;
+        width: 362px;
+
+        /* padding-inline: 10px; */
+      }
+      .search {
+        float: left;
+        margin-inline: 25px 25%;
+      }
+
+      .add-text input,
+      .add-text button {
+        margin-left: 20px;
+      }
+
+      .add-text input {
+        float: left;
+      }
+      .add-text button {
+        margin-left: 21px;
+        float: right;
+      }
+      p {
+        word-break: break-all;
+      }
+      .p {
+        float: left;
+        width: 97%;
+        /* margin-left: 35%; */
+      }
+      td {
+        width: 90%;
+      }
+      th,
+      td {
+        height: 20px;
+        width: 100px;
+        word-break: break-all;
+        border: 2px solid darkgrey;
+      }
+      th#f {
+        width: 80%;
+      }
+      /* .p {
+        float: left;
+        width: 90%;
+      } */
+      .container {
+        width: 30%;
+        text-align: center;
+        padding: 20px;
+        margin: 50px auto;
+        background-color: gray;
+        overflow: hidden;
+      }
+      span {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      input[type="radio"] {
+        margin-left: 10px;
+      }
+      .container > * {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>search for news</h1>
+    <div class="container">
+      <div class="type">
+        <span>news type: </span>
+        <input type="radio" value="sport" name="type" checked />
+        <span>sport </span>
+        <input type="radio" value="social" name="type" />
+        <span>sotial </span>
+        <input type="radio" value="politic" name="type" />
+        <span>politic </span>
+      </div>
+
+      <div class="add-text">
+        <input type="text" class="" placeholder="add here" />
+        <!-- <button onclick="addNews()">add</button> -->
+        <button>add</button>
+      </div>
+
+      <div class="search"><span>search : </span><input type="text" /></div>
+
+      <!-- <datalist id="suggestions">
+        <option value="sport"></option>
+        <option value="social"></option>
+        <option value="politics"></option>
+      </datalist> -->
+
+      <div class="p">
+        <table>
+          <!-- <tr>
+            <th>type</th>
+            <th id="f">news</th>
+          </tr> -->
+        </table>
+      </div>
+    </div>
+    <script>
+      var newsArr = [];
+      var searchInput = document.querySelector(".search input");
+      var addBtn = document.querySelector(".add-text button");
+
+      addBtn.addEventListener("click", addNews);
+      searchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") searchNews();
+        // if (e.key === "Enter") addTableHead();
+      });
+      searchInput.addEventListener("blur", function (e) {
+        deleteRows();
+        newsArr.forEach(function (val) {
+          newRow(val.selectedType, val.news);
+        });
+        // if (e.key === "Enter") addTableHead();
+      });
+      function searchNews() {
+        var searchVal = document.querySelector(".search input").value;
+        var isSearchValValid = newsArr.some(function (val) {
+          return val.news === searchVal;
+        });
+        // console.log(isSearchValValid, "isSearchValValid");
+        var filteredArr = searchNews
+          ? newsArr.slice().filter(function (val) {
+              // return val.news === searchVal;
+              return val.news.indexOf(searchVal) > -1;
+            })
+          : newsArr;
+
+        // console.log(103, "103");
+        // console.log(filteredArr, "filteredArr");
+        deleteRows();
+        for (let i = 0; i < filteredArr.length; i++) {
+          newRow(filteredArr[i].selectedType, filteredArr[i].news);
+          // document.querySelector("tbody").insertAdjacentHTML(
+          //   "beforeend",
+          //   `<tr>
+          //   <th>${filteredArr[i].selectedType}</th>
+          //   <th>${filteredArr[i].news}</th>
+          // </tr>`
+          // );
+        }
+      }
+
+      function deleteRows() {
+        // var allAddedNews = document.querySelector("tbody");
+        if (!document.querySelector("tbody")) return;
+        document.querySelector("tbody").remove();
+        var tbody = document.createElement("tbody");
+        document.querySelector("table").appendChild(tbody);
+      }
+
+      function checkDuplication() {
+        // var allAddedNews = document.querySelector("tbody");
+        var inputNews = document.querySelector('input[type="text"]').value;
+        var inputType = document.querySelector(
+          'input[name="type"]:checked'
+        ).value;
+        console.log(inputNews);
+        console.log(inputType);
+        if (newsArr.length === 0) return false;
+
+        for (let i = 0; i < newsArr.length; i++) {
+          if (newsArr[i].selectedType === inputType) {
+            if (newsArr[i].news === inputNews) {
+              console.log("duplicate");
+              return true;
+            }
+          }
+        }
+        // console.log(allAddedNews);
+        console.log("unique");
+        return false;
+        // var val = document.querySelector('input[type="text"]').value;
+        // allAddedNews.forEach(function (val) {
+        //   console.log(val);
+        // });
+      }
+      function addTableHead() {
+        document.querySelector("table").insertAdjacentHTML(
+          "afterbegin",
+
+          `
+          <thead>
+          <tr id='head'>
+                <th>Type</th>
+                <th id="f">News</th>
+              </tr>
+              </thead>
+             <tbody>
+
+              </tbody>
+              `
+        );
+      }
+      function newRow(type, content) {
+        if (!document.querySelector("#head")) {
+          addTableHead();
+        }
+        if (!document.querySelector("tbody")) {
+          document
+            .createElement("table")
+            .appendChild(document.createElement("tbody"));
+        }
+        console.log(!document.querySelector("tbody"));
+        console.log(Boolean(!document.querySelector("tbody")));
+        document.querySelector("tbody").insertAdjacentHTML(
+          "beforeend",
+          `<tr>
+                <td>${type}</td>
+                <td id="f">${content}</td>
+            </tr>`
+        );
+      }
+      var index = 0;
+      function addNews(e) {
+        console.log(e);
+        if (document.querySelector('input[type="text"]').value === "") return;
+
+        var selectedType = document.querySelector(
+          'input[name="type"]:checked'
+        ).value;
+        // console.log(selectedType, "selectedType");
+        var news = document.getElementsByTagName("input")[3].value;
+        // console.log(news, "news");
+
+        console.log(checkDuplication());
+
+        if (checkDuplication()) return;
+        // checkDuplication();
+        console.log("no duplication");
+        newsArr.unshift({ selectedType, news });
+        console.log(newsArr, "newsArr");
+        document.querySelector('input[type="text"]').value = "";
+        // console.log(newsArr, "newsArr");
+        // if (newsArr.length === 1) {
+        newRow(newsArr[0].selectedType, newsArr[0].news);
+
+        // document.querySelector(".p").insertAdjacentHTML(
+        //   "beforeend",
+        //   `<table>
+        //     <tr>
+        //       <th>type</th>
+        //       <th id="f">news</th>
+        //     </tr>
+        //     <tbody></tbody>
+        //     </table>`
+        // );
+        //     document.querySelector(".p").insertAdjacentHTML(
+        //       "beforeend",
+        //       `<table>
+        //         <tbody></tbody>
+        //         </table>`
+        //     );
+        // }
+
+        //   document.querySelector("tbody").insertAdjacentHTML(
+        //     "beforeend",
+        //     `<tr>
+        //        <td>${newsArr[0].selectedType}</td>
+        //        <td>${newsArr[0].news}</td>
+        //     </tr>`
+        //   );
+      }
+    </script>
+  </body>
+</html>

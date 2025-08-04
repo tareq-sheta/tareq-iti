@@ -1,0 +1,22 @@
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>enter numbers and sum till reach 100</h1>
+
+    <script>
+      var val1;
+      var sum = 0;
+      do {
+        val1 = prompt("Enter numeric value");
+        if (isNaN(val1) || val1 == 0)
+          // alert("please enter vaid number above zero");
+          "";
+        else sum += +val1;
+        if (sum >= 100 || val1 == 0) break;
+      } while (true);
+      alert("current total sum is :" + sum);
+    </script>
+  </body>
+</html>

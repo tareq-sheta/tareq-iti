@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      h2 {
+        color: red;
+      }
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>showing photo and color</h1>
+    <!-- <img src="imgs/arrows.png" alt="img" style="border: 1px solid red" /> -->
+
+    <script>
+      var imgName = prompt("Enter img name");
+      var color = prompt("Enter a color value");
+
+      document.write(`<p style="color:${color}">this is photo</p><br>
+      <img src="imgs/${imgName}.png" alt="img" style="border: 1px solid ${color}" />`);
+      // } while (Number.isNaN(val1) || Number.isNaN(val2) || Number.isNaN(val3));
+    </script>
+  </body>
+</html>

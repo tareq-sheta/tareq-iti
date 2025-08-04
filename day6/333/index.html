@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p></p>
+    <script>
+      var images = [
+        "r1",
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r10",
+      ];
+      // document.body.style.backgroundColor = "color";
+      // document.body.style.backgroundImage = "url(imagepath)";
+      var c = 10;
+      function changeBkImg() {
+        document.body.style.backgroundImage = `url(${images[c]}.png)`;
+        document.getElementsByTagName("p")[0].textContent = c;
+        if (c == 0) {
+          clearInterval(r);
+          close();
+        }
+
+        return c--;
+      }
+
+      var r = setInterval(changeBkImg, 1000);
+
+      // console.log(e);
+    </script>
+  </body>
+</html>

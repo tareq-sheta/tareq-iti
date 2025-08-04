@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      h2 {
+        color: red;
+      }
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>same length numbers</h1>
+
+    <script>
+      var arr = [10.2, 20, 34, 333.12345];
+      var string = "";
+
+      for (let i = 0; i < arr.length; i++) {
+        string += `${arr[i].toPrecision(10)} \n`;
+      }
+      alert(string);
+    </script>
+  </body>
+</html>

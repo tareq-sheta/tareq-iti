@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p></p>
+
+    <script>
+      var text = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+      incidunt vero dolor animi amet atque dolorem voluptas. Illum facere
+      architecto error? Fuga omnis natus ab ratione laboriosam quos itaque?
+      Aspernatur?`;
+      var w = "";
+      var i = 0;
+      function increment() {
+        w += text[i];
+        document.getElementsByTagName("p")[0].textContent = w;
+        i++;
+        if (text.length === 0) clearInterval(e);
+      }
+      var e = setInterval(increment, 100);
+    </script>
+  </body>
+</html>

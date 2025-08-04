@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      h2 {
+        color: red;
+      }
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>adding - multiplying - deviding 3 values</h1>
+    <hr />
+    <h2>sum of 3 values <span id="op1"></span></h2>
+    <h2>multiplying of 3 values <span id="op2"></span></h2>
+    <h2>devision of 3 values <span id="op3"></span></h2>
+    <script>
+      function isThereZero(a, b, c) {
+        if (!a || !b || !c) return true;
+        return false;
+      }
+      do {
+        var val1 = prompt("Enter first value");
+        var val2 = prompt("Enter second value");
+        var val3 = prompt("Enter third value");
+        val1 = Number(val1);
+        val2 = Number(val2);
+        val3 = Number(val3);
+        // val1 = prompt("Enter first value");
+        // val2 = prompt("Enter second value");
+        if (Number.isNaN(val1)) alert("please enter a valid number for val1");
+        if (Number.isNaN(val2)) alert("please enter a valid number  for val2");
+        if (Number.isNaN(val3)) alert("please enter a valid number  for val3");
+      } while (Number.isNaN(val1) || Number.isNaN(val2) || Number.isNaN(val3));
+
+      document.getElementById(
+        "op1"
+      ).textContent = `${val1} + ${val2} + ${val3} = ${val1 + val2 + val3}`;
+      document.getElementById(
+        "op2"
+      ).textContent = `${val1} * ${val2} * ${val3} = ${val1 * val2 * val3}`;
+      document.getElementById(
+        "op3"
+      ).textContent = `${val1} / ${val2} / ${val3} = ${
+        isThereZero(val1, val2, val3) ? "not allowed" : val1 / val2 / val3
+      }`;
+
+      // header;
+      // alert("Hello " + name);
+    </script>
+  </body>
+</html>

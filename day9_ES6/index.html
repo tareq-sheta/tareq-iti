@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function isPureStringUniqueArr(arr) {
+        // var t = arr.toString()
+        for (let i = 0; i < arr.length; i++) {
+          if (!isPureString(arr[i])) return false;
+          if (arr.indexOf(arr[i]) !== arr.lastIndexOf(arr[i])) return false;
+        }
+        return true;
+      }
+      function isPureString(str) {
+        return /^[a-zA-Z]+$/.test(str);
+      }
+
+      let arr = [11, 32, 23, 54, 15, 86, 37, 18, 29];
+
+      let arrSortAsc = (...arr) => {
+        if (arr.length === 0) {
+          console.log("please enter an array");
+          return;
+        }
+        let v = arr.sort((a, b) => a - b);
+        console.log(v.toString());
+      };
+      let arrSortDec = (...arr) => {
+        let v = arr.sort((a, b) => b - a);
+        console.log("ascend arr : " + v.toString());
+      };
+      let sortArr = (...arr) => {
+        arrSortAsc(...arr);
+        arrSortDec(...arr);
+      };
+      let arrFilterAboveFifty = (...arr) => {
+        if (arr.length === 0) {
+          console.log("please enter an array");
+          return;
+        }
+        let v = arr.filter((val) => val < 50);
+        console.log("descend arr : " + v.toString());
+      };
+      let maxAndMin = (...arr) => {
+        if (arr.length === 0) {
+          console.log("please enter an array");
+          return;
+        }
+        let max = Math.max(...arr);
+        let min = Math.min(...arr);
+        // let min = arr.slice();
+        console.log(`max is : ${max}\n
+        min is : ${min}`);
+      };
+
+      let doOperation = (opr, ...arr) => {
+        let opStr;
+        if (opr === "+" || opr === "-" || opr === "*" || opr === "/") {
+          if (opr === "+") opStr = "sum";
+          if (opr === "-") opStr = "substitution";
+          if (opr === "*") opStr = "multiplication";
+          if (opr === "/") opStr = "devision";
+          let res = `result of ${opStr} operation for ${arr.toString()} is ${eval(
+            arr.join(opr)
+          )} `;
+          console.log(res);
+          return res;
+        }
+        return "in valild op argument";
+      };
+
+      let keyOne, keyTwo, keyThree;
+      //   do {
+      //     keyOne = prompt("enter first key (projectId)");
+      //   } while (!isPureStringUniqueArr(keyOne));
+      //   let keyOneVal = prompt("enter first key Val");
+
+      //   do {
+      //     keyTwo = prompt("enter second key (projectName)");
+      //   } while (!isPureStringUniqueArr(keyTwo));
+      //   let keyTwoVal = prompt("enter second key Val");
+
+      //   do {
+      //     keyThree = prompt("enter third key (duration)");
+      //   } while (!isPureStringUniqueArr(keyThree));
+      //   let keyThreeVal = prompt("enter three key Val");
+
+      //   const projectData = {
+      //     [keyOne]: keyOneVal,
+      //     [keyTwo]: keyTwoVal,
+      //     [keyThree]: keyThreeVal,
+      //     PrintData: function () {
+      //       console.log(
+      //         `{ ${keyOne} : ${keyOneVal},${keyTwo} : ${keyTwoVal},${keyThree} : ${keyThreeVal}}`
+      //       );
+      //     },
+      //   };
+      //   let arr1 = [10, 50, 60, 15, 25];
+      //   sortArr(...arr);
+      //   maxAndMin(...arr);
+      //   arrFilterAboveFifty(...arr);
+      //   doOperation(...arr);
+      //   projectData.PrintData();
+
+      let prompt1 = prompt("enter operator");
+      doOperation(prompt1, ...arr);
+    </script>
+  </body>
+</html>

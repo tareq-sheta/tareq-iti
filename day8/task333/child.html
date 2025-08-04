@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form {
+        margin: 50px;
+        border: 3px solid black;
+        padding: 10px;
+        width: 500px;
+      }
+      .error {
+        background-color: red;
+        font-weight: bold;
+      }
+      input {
+        margin-left: 10px;
+      }
+      .npt {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="child.html">
+      <div class="">
+        <span>enter name : </span>
+        <input type="text" name="name" />
+        <span class="error"></span>
+      </div>
+      <br />
+      <div class="npt">
+        <span>enter country : </span>
+        <select name="country">
+          <!-- <option value="egypt">egypt</option>
+          <option value="ksa">saudi arabia</option>
+          <option value="turkey">turkey</option>
+          <option value="sudan">sudan</option>
+          <option value="france">france</option> -->
+          <option value="">choose country</option>
+          <option value="1111">egypt</option>
+          <option value="2222">saudi arabia</option>
+          <option value="3333">turkey</option>
+          <option value="4444">sudan</option>
+          <option value="5555">france</option>
+        </select>
+      </div>
+      <br />
+      <span>enter zip code : </span>
+      <input type="text" name="zip" />
+      <br />
+      <br />
+      <span>enter email : </span>
+      <input type="text" name="email" />
+      <br />
+      <br />
+      <span style="margin-right: 10px">hobies : </span>
+      <input type="checkbox" name="hoppies" checked value="writing" /><span
+        >writing</span
+      >
+      <input type="checkbox" name="hoppies" value="reading" /><span
+        >reading</span
+      >
+      <input type="checkbox" name="hoppies" value="swimming" /><span
+        >swimming</span
+      >
+      <input type="checkbox" name="hoppies" value="sleeping" /><span
+        >sleeping</span
+      >
+      <br />
+      <br />
+      <button onclick="clicker()">register</button>
+    </form>
+    <script>
+      function validateEmail(e) {
+        var value = e.target.value;
+        console.log(value, "value");
+        var patern = /\S+@\S+\.\S+/;
+        // console.log(patern.test(value), "patern.test(value)");
+        return patern.test(value);
+      }
+      var form = document.querySelector("form");
+      var errMsg = document.querySelector(".error");
+      var fname = document.querySelector("input[name=name]");
+      addEventListener("load", function () {
+        fname.focus();
+      });
+      fname.addEventListener("blur", function (e) {
+        // if (e.target === fname) console.log(e.target, " e.target");
+
+        if (e.target.value === "") {
+          e.target.focus();
+          errMsg.innerText = "please fill the username feild";
+        } else {
+          errMsg.innerText = "";
+        }
+      });
+      console.log(fname, "fname");
+      // --------
+      var zip = document.querySelector("input[name=zip]");
+      var country = document.querySelector("select");
+      country.addEventListener("change", function (e) {
+        console.log(e.target.value);
+        if (e.target.value !== "") zip.value = e.target.value;
+      });
+
+      // console.log(zip, "zip");
+      var email = document.querySelector("input[name=email]");
+
+      email.addEventListener("blur", function (e) {
+        // console.log(validateEmail(e), " validateEmail(e)");
+        if (!validateEmail(e)) {
+          email.focus();
+          email.select();
+        }
+      });
+      // console.log(email, "email");
+      // var hoppies = document.querySelectorAll("input[name=hoppies]:checked");
+      // console.log(hoppies, "hoppies");
+      function clicker() {
+        open("child.html");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <p>print header multiple lines</p>
+    <hr />
+    <h1>this is heading number 1</h1>
+    <hr />
+    <h2>this is heading number 2</h2>
+    <hr />
+    <h3>this is heading number 3</h3>
+    <hr />
+    <h4>this is heading number 4</h4>
+    <hr />
+    <h5>this is heading number 5</h5>
+    <hr />
+    <h6>this is heading number 6</h6>
+    <hr />
+
+    <script>
+      var message = prompt("Enter a message");
+      for (let i = 0; i < 6; i++) {
+        document.getElementsByTagName(`h${i + 1}`)[0].textContent =
+          String(message);
+      }
+
+      // header;
+      // alert("Hello " + name);
+    </script>
+  </body>
+</html>

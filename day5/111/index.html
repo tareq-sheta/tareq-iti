@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>enter array and show repetead</h1>
+    <script>
+      var strArr = prompt("enter an array (e.g., a b c a d e c)");
+      var Arr = strArr.split(" ");
+      var dup = [];
+      var seen = [];
+      var str = "";
+      var str2 = "";
+
+      Arr.forEach(function (element, i, arr) {
+        // Check if the element is a duplicate and hasn't been processed yet
+        if (
+          arr.indexOf(element) !== arr.lastIndexOf(element) &&
+          seen.indexOf(element) === -1
+        ) {
+          dup.push(arr.lastIndexOf(element));
+          str2 += `<p>row ${i + 1}</p><br>`;
+          seen.push(element); // mark as processed
+        }
+
+        str += `<tr><td>${element}</td></tr>`;
+      });
+
+      document.write(`
+        <table border='1'>
+          <tr><td>value</td></tr>
+          ${str}
+        </table>
+        ${dup.length > 0 ? `<p>repeated</p><br>${str2}` : ""}
+      `);
+    </script>
+  </body>
+</html>
+
+<!-- var strArr = prompt("enter an array"); var Arr = strArr.split(" "); var str =
+""; Arr.forEach(function (element) { str += `
+<tr>
+  <td>${element}</td>
+</tr>
+`; }); // Arr.forEach(function (element, _, arr) { // if (arr.indexOf(element)
+=== arr.lastIndexOf(element)) // return (dup = element); // }); document.write(`
+<table border="1">
+  <tr>
+    <td>value</td>
+  </tr>
+  ${str}
+</table>
+`); -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var strArr = prompt("enter an array");
+      var Arr = strArr.split(" ");
+      var dup = [];
+
+      var str = "";
+      var str2 = "";
+
+      Arr.forEach(function (element, _, arr) {
+        if (arr.indexOf(element) !== arr.lastIndexOf(element)) {
+          dup.push(arr.lastIndexOf(element));
+          str2 += `<p>row ${element}</p><br>`;
+        }
+
+        str += `<tr><td>${element}</td></tr>`;
+      });
+
+      document.write(`
+      <table border='1'>
+        <tr><td>value</td></tr>
+      ${str}
+      </table>
+      ${dup.length > 0 ? `(<p> repeated<br></p>"<br>${str2}` : ""}
+      `);
+    </script>
+  </body>
+</html>
+
+var strArr = prompt("enter an array"); var Arr = strArr.split(" "); var str =
+""; Arr.forEach(function (element) { str += `
+<tr>
+  <td>${element}</td>
+</tr>
+`; }); // Arr.forEach(function (element, _, arr) { // if (arr.indexOf(element)
+=== arr.lastIndexOf(element)) // return (dup = element); // }); document.write(`
+<table border="1">
+  <tr>
+    <td>value</td>
+  </tr>
+  ${str}
+</table>
+`); -->

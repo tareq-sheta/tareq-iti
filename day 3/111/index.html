@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <style>
+      *,
+      *::after,
+      *::before {
+        padding: 0;
+        margin: 0;
+        text-transform: capitalize;
+      }
+      body {
+        background-color: beige;
+      }
+      .cont {
+        width: 500px;
+        background-color: white;
+        margin: auto;
+        padding: 60px;
+      }
+      input[type="text"] {
+        display: block;
+        margin: 10px auto;
+        height: 30px;
+      }
+      .register-cont {
+        text-align: center;
+      }
+      .register-cont a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        margin: 0 10px;
+      }
+      .forgot {
+        text-align: center;
+      }
+      .forgot > span,
+      .forgot > a {
+        margin: 10px;
+      }
+      p {
+        text-align: center;
+      }
+      button {
+        display: block;
+        width: 100%;
+        margin: 20px 0;
+        padding: 15px 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+      <div class="register-cont">
+        <a href="#"><img src="" alt="" />login to facebook</a>
+        <a href="#"><img src="" alt="" />login to twitter</a>
+      </div>
+      <p
+        style="
+          border-radius: 50%;
+          text-align: center;
+          padding: 18px;
+          height: 18px;
+          width: 18px;
+          margin: 20px auto;
+          background-color: lightgray;
+        "
+      >
+        OR
+      </p>
+      <form action="">
+        <input type="text" placeholder="user" name="fname" />
+        <input type="text" placeholder="pass" name="lname" />
+
+        <div class="forgot">
+          <input type="checkbox" name="keep_sign" id="" /><span
+            >keep me signed in</span
+          >
+          <a href="#">Forgot your password?</a>
+        </div>
+        <button type="submit">login</button>
+        <p>not a member? <a href="#">signup now</a></p>
+      </form>
+    </div>
+  </body>
+</html>

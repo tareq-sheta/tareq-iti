@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      // for (const key in location) {
+      //   const element = location[key];
+      //   console.log(element, key);
+      // }
+      var data = document.cookie.split(";");
+      // var data = document.cookie;
+      console.log(data, "data");
+      // data = data.substring(1).split("&");
+      var name1 = data[0].split("=")[1];
+
+      var gender = data[1].split("=")[1];
+      var color = data[2].split("=")[1];
+      console.log(name1, "name1");
+      console.log(gender, "gender");
+      console.log(color, "color");
+
+      document.write(
+        `  <img src="${gender}.png" alt="${gender} image"> <p>welcome <span style="color:${color}">${name1}</span></p>`
+      );
+    </script>
+  </body>
+</html>

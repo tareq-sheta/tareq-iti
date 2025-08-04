@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      h2 {
+        color: red;
+      }
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>convert regix from one to another</h1>
+
+    <script>
+      function isValidRadix(radix) {
+        if (radix == 2 || radix == 8 || radix == 10 || radix == 16) return true;
+        else return false;
+      }
+      function isValidNumForRadix(num, radix) {
+        if (!num || !radix) return false;
+        var numStr = num.toString();
+
+        for (let i = 0; i < numStr.length; i++) {
+          if (Number.isNaN(parseInt(numStr[i], radix))) return false;
+        }
+        return true;
+      }
+
+      var radix, val1, tRadix;
+
+      do {
+        var radix = prompt("Enter first radix");
+        if (!isValidRadix(radix)) {
+          console.log(!isValidRadix(radix), "!isValidRadix(radix)");
+          alert("please enter a valid number for the first radix");
+        }
+      } while (isNaN(radix) || !isValidRadix(radix));
+      do {
+        var val1 = prompt("Enter first value");
+        if (!isValidNumForRadix(val1, radix)) {
+          alert("please enter a valid number for the value");
+        }
+      } while (isNaN(val1) && isValidNumForRadix(val1, radix));
+      do {
+        var tRadix = prompt("Enter target radix");
+        if (!isValidRadix(tRadix)) {
+          alert("please enter a valid number for target radix");
+        }
+      } while (isNaN(tRadix) || !isValidRadix(tRadix));
+
+      var finalRes = parseInt(val1, radix);
+      alert(finalRes);
+    </script>
+  </body>
+</html>

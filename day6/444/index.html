@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .slider-cont {
+      height: 500px;
+    }
+  </style>
+  <body>
+    <div class="main-cont">
+      <h1>slider game</h1>
+      <div class="slider-cont">
+        <img src="r1.png" alt="" />
+      </div>
+      <div class="buttons">
+        <button onclick="next()">next</button>
+        <button id="start" onclick="startShow()">start</button>
+        <button id="stop" disabled="false" onclick="stopShow()">stop</button>
+        <button onclick="prev()">prev</button>
+      </div>
+    </div>
+    <script>
+      var images = [
+        "r1.png",
+        "r2.png",
+        "r3.png",
+        "r4.png",
+        "r5.png",
+        "r6.png",
+        "r7.png",
+        "r8.png",
+        "r9.png",
+        "r10.png",
+      ];
+      var c = 0;
+
+      // document.getElementById("stop").setAttribute("disabled", true);
+      function prev() {
+        c--;
+        // document.getElementsByName("img")[0].src = images[c];
+        if (c < 0) c = images.length - 1;
+        document.getElementsByTagName("img")[0].src = images[c];
+      }
+      function next() {
+        c++;
+        if (c > images.length - 1) c = 0;
+        // document.getElementsByName("img")[0].src = images[c];
+        document.getElementsByTagName("img")[0].src = images[c];
+      }
+      function startShow() {
+        t = setInterval(next, 1000);
+
+        document.getElementById("start").disabled = true;
+        document.getElementById("stop").disabled = false;
+      }
+      function stopShow() {
+        clearInterval(t);
+
+        document.getElementById("start").disabled = false;
+        document.getElementById("stop").disabled = true;
+      }
+    </script>
+  </body>
+</html>

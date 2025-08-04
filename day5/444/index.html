@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      h2 {
+        color: red;
+      }
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>enter number and name and validate them</h1>
+    <!-- <img src="imgs/arrows.png" alt="img" style="border: 1px solid red" /> -->
+
+    <script>
+      function isPureString(str) {
+        if (str.length === 0) return false;
+
+        for (let i = 0; i < str.length; i++) {
+          const char = str[i];
+          if (char >= "0" && char <= "9") {
+            return false;
+          }
+        }
+
+        return true;
+      }
+      function isValidPhone(str) {
+        if (str.length !== 11) {
+          alert(" enter valid number : 01X-XXXXXXX");
+          return false;
+        }
+        if (str[3] !== "-") {
+          alert(" enter valid number : 01X-XXXXXXX");
+          return false;
+        }
+
+        const prefix = str.slice(0, 3);
+        const number = str.slice(4);
+
+        for (let i = 0; i < prefix.length; i++) {
+          if (prefix[i] < "0" || prefix[i] > "9") {
+            alert(" enter valid number : 01X-XXXXXXX");
+            return false;
+          }
+        }
+        // function isValidPhone(str) {
+        //   if (str.length !== 11) {
+        //     alert(" enter valid number ");
+        //     return ;
+        //   }
+        //   if (str.charAt(3) !== "-") {
+        //     alert("please enter valid num");
+        //     return false;
+        //   }
+
+        //   const prefix = str.slice(0, 3);
+        //   const number = str.slice(4);
+
+        //   for (let i = 0; i < prefix.length; i++) {
+        //     if (prefix[i] < "0" || prefix[i] > "9") {
+        //       alert(" enter valid number : 01X-XXXXXXX");
+        //       return false;
+        //     }
+        //   }
+
+        for (let i = 0; i < number.length; i++) {
+          if (number[i] < "0" || number[i] > "9") {
+            alert(" enter valid number : 01X-XXXXXXX");
+            return false;
+          }
+        }
+
+        if (str[0] !== "0" || str[1] !== "1") {
+          alert(" enter valid number : 01X-XXXXXXX");
+          return false;
+        }
+
+        const thirdDigit = str[2];
+        if (
+          thirdDigit !== "0" &&
+          thirdDigit !== "1" &&
+          thirdDigit !== "2" &&
+          thirdDigit !== "5"
+        ) {
+          alert(" enter valid number : 01X-XXXXXXX");
+          return false;
+        }
+
+        return true;
+      }
+      var name1, phone;
+
+      // let phone;
+
+      do {
+        phone = prompt("enter phone number");
+      } while (!isValidPhone(phone));
+      alert(`name is: ${name1} \nPhone number :  ${phone}`);
+    </script>
+  </body>
+</html>

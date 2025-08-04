@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      // for (const key in location) {
+      //   const element = location[key];
+      //   console.log(element, key);
+      // }
+      var data = location.search;
+      data = data.substring(1).split("&");
+      var name1 = data[0].split("=")[1];
+      var age = data[1].split("=")[1];
+      var gender = data[2].split("=")[1];
+      var color = data[3].split("=")[1];
+      console.log(data, "data");
+      document.write(
+        `  <img src="../${gender}.png" alt="${gender} image"> <p>welcome <span style="color:${color}">${name1}</span></p>`
+      );
+    </script>
+  </body>
+</html>

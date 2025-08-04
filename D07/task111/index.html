@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      .card {
+        width: 70%;
+        margin: auto;
+        text-align: center;
+      }
+      .add-task {
+        width: 100%;
+        /* margin: auto;
+        text-align: center; */
+      }
+      .add-task input {
+        width: 73%;
+        padding: 10px;
+        margin-right: 3%;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 6px 7px 15px 0px rgba(0, 0, 0, 0.5);
+      }
+      .add-task button {
+        width: 10%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(3, 56, 202);
+        color: white;
+      }
+      .present-data {
+        margin-top: 20px;
+        width: 100%;
+      }
+      .present-data th,
+      td {
+        width: 33%;
+      }
+      .present-data th {
+        padding: 10px;
+        background-color: rgb(202 3 22);
+        color: white;
+      }
+      .present-data td {
+        padding: 10px;
+      }
+      .colorCellGray {
+        padding: 10px;
+        background-color: rgb(185, 185, 185);
+      }
+      .strikeTask {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>To do list</h1>
+      <div class="add-task">
+        <input type="text" placeholder="Enter your task" />
+        <button onclick="addTask()">add</button>
+      </div>
+      <table class="present-data">
+        <thead>
+          <tr>
+            <th>done</th>
+            <th>task</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td><input type="checkbox" name="done" /></td>
+            <td>qwertyuiop</td>
+            <td><button onclick="deleteTask(`row-1`)">❌</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="done" /></td>
+            <td>asdfghjkl</td>
+            <td><button onclick="deleteTask(`row-2`)">❌</button></td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <script>
+      var index = 1;
+
+      function deleteTask(index) {
+        document.getElementById(`row-${index}`).remove();
+      }
+      function addTask() {
+        var taskValue = document.querySelector(".add-task input").value;
+
+        var tr = `<tr id="row-${index}">
+            <td><input type="checkbox" name="done" onclick="taskDone(${index})" /></td>
+            <td>${taskValue}</td>
+            <td><button onclick="deleteTask(${index})">❌</button></td>
+          </tr>`;
+        document.querySelector("tbody").innerHTML += tr;
+        document.querySelector(".add-task input").value = "";
+        index++;
+      }
+      function taskDone(index) {
+        var task = document.getElementById(`row-${index}`);
+        var taskCheckBox = task.children[0].children[0];
+        var taskValue = task.children[1];
+        console.log(taskValue);
+        taskCheckBox.disabled = true;
+        taskValue.classList.add("strikeTask");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      h2 {
+        color: red;
+      }
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>chooosing pannel</h1>
+    <script>
+      // function isValidNumber(input) {
+      //   if (input === null) return false;
+      //   var i;
+
+      //   for (i = 0; i < input.length; i++) {
+      //     if (input[i] !== " ") break;
+      //   }
+
+      //   if (i === input.length) return false;
+
+      //   return !isNaN(Number(input));
+      // }
+      function isValidNumber(input) {
+        return Number(input);
+      }
+
+      // function getNumberInput(message) {
+      //   var value;
+      //   do {
+      //     value = prompt(message);
+      //   } while (!isValidNumber(value));
+      //   return Number(value);
+      // }
+
+      function getValidArray(size) {
+        var arr = [];
+        var i;
+        for (i = 0; i < size; i++) {
+          var val;
+          do {
+            val = prompt("please enter number " + (i + 1) + ":");
+          } while (!isValidNumber(val));
+          arr.push(Number(val));
+        }
+        return arr;
+      }
+
+      function runArrayMenu() {
+        // var size = getNumberInput("enter array size:");
+        size = prompt("enter array size:");
+        var originalArray = getValidArray(size);
+        var repeat = true;
+
+        while (repeat) {
+          var choice = prompt(
+            "Choose an option:\n" +
+              "a - array same order\n" +
+              "b - array ascending order\n" +
+              "c - array descending order\n" +
+              "d - reversed array\n" +
+              "e - even numbers only\n" +
+              "f - filter divisible by a number\n" +
+              "g - 30% discount \n" +
+              "h - concat with ***"
+          );
+
+          var output = "";
+          var i;
+
+          switch (choice) {
+            case "a":
+              output = "original : " + originalArray.join(", ");
+              break;
+
+            case "b":
+              var asc = originalArray.slice();
+              asc.sort(function (a, b) {
+                return a - b;
+              });
+              output = "ascending: " + asc.join(", ");
+              break;
+
+            case "c":
+              var desc = originalArray.slice();
+              desc.sort(function (a, b) {
+                return b - a;
+              });
+              output = "descending: " + desc.join(", ");
+              break;
+
+            case "d":
+              var reversed = [];
+              for (i = originalArray.length - 1; i >= 0; i--) {
+                reversed.push(originalArray[i]);
+              }
+              output = "reverse: " + reversed.join(", ");
+              break;
+
+            case "e":
+              var evens = [];
+              for (i = 0; i < originalArray.length; i++) {
+                if (originalArray[i] % 2 === 0) {
+                  evens.push(originalArray[i]);
+                }
+              }
+              if (evens.length > 0) {
+                output = "only even: " + evens.join(", ");
+              } else {
+                output = "No even found.";
+              }
+              break;
+
+            case "f":
+              // var divisor = getNumberInput(
+              //   "enter number to check divisibility:"
+              // );
+              var divisor = prompt("enter number to check divisibility:");
+              var divisible = [];
+              for (i = 0; i < originalArray.length; i++) {
+                if (originalArray[i] % divisor === 0) {
+                  divisible.push(originalArray[i]);
+                }
+              }
+              if (divisible.length > 0) {
+                output =
+                  "numbers divisible by " +
+                  divisor +
+                  ": " +
+                  divisible.join(", ");
+              } else {
+                output = "no numbers divisible by " + divisor + ".";
+              }
+              break;
+
+            case "g":
+              var discounted = [];
+              for (i = 0; i < originalArray.length; i++) {
+                discounted.push((originalArray[i] * 0.7).toFixed(2));
+              }
+              output = "30% discount: " + discounted.join(", ");
+              break;
+
+            case "h":
+              var concat = "";
+              for (i = 0; i < originalArray.length; i++) {
+                concat += originalArray[i];
+                if (i < originalArray.length - 1) {
+                  concat += "***";
+                }
+              }
+              output = "Concatenated: " + concat;
+              break;
+
+            default:
+              output = "invalid, please cchoose valid choice";
+          }
+
+          alert(output);
+          repeat = confirm("start again?");
+        }
+      }
+
+      runArrayMenu();
+
+      //------------------
+      // var arr = [];
+      // var l;
+      // console.log(l);
+      // function iNum(n) {
+      //   return !iNaN(n);
+      // }
+
+      // do {
+      //   arrElement = prompt("enter element");
+
+      //   if (iNum(arrElement)) arr.push(arrElement);
+
+      //   l = confirm("want to continue adding?");
+      // } while (l);
+
+      // arr.console.log(arr);
+    </script>
+  </body>
+</html>

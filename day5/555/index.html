@@ -1,0 +1,73 @@
+v
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      h2 {
+        color: red;
+      }
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>students grades</h1>
+    <!-- <img src="imgs/arrows.png" alt="img" style="border: 1px solid red" /> -->
+
+    <script>
+      var name1, phone;
+      // var Number.isNaN(name1 / 0) = ;
+      var isString = function (str) {
+        if (str.length === 0) return false;
+
+        const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (let i = 0; i < str.length; i++) {
+          if (letters.indexOf(str[i]) === -1) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+
+      var arr1 = [12, 89, 54, 12];
+      var arr2 = [65, 87, 64, 72];
+      do {
+        name1 = prompt("enter name");
+      } while (!isString(name1));
+
+      var inputs = prompt("enter students values");
+      var ii = confirm("u sure");
+
+      if (ii)
+        document.write(`
+                  <table border='1'>
+
+                       <tr>
+                        <td>stu1</td>
+                        <td>stu2</td>
+                        <td>stu3</td>
+                        <td>stu3</td>
+                        </tr>
+                  <tr>
+                    <td>${arr1[0]}</td>
+                    <td>${arr1[1]}</td>
+                    <td>${arr1[2]}</td>
+                    <td>${arr1[0] + arr1[1] + arr1[2]}</td>
+
+                  </tr>
+                  <tr>
+                    <td>${arr2[0]}</td>
+                    <td>${arr2[1]}</td>
+                    <td>${arr2[2]}</td>
+                    <td>${arr2[0] + arr2[1] + arr2[2]}</td>
+
+                  </tr>
+
+                  </table>
+                  `);
+    </script>
+  </body>
+</html>

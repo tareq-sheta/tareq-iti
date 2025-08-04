@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .cnt {
+        position: relative;
+        margin-left: 50px;
+
+        max-width: 80vw;
+        box-shadow: blue 10px 10px 10px;
+        transition: transform 3s ease-in;
+        border: 3px solid greenyellow;
+        border-radius: 5px;
+        /* box-shadow:; */
+      }
+      .cnt::before {
+        position: absolute;
+        pointer-events: none;
+        content: "";
+        height: 100%;
+        width: 100%;
+        border: 3px solid red;
+        border-radius: 5px;
+        left: -6px;
+        bottom: 0px;
+        background-color: transparent;
+      }
+      table {
+        /* width: 1100px; */
+        width: 100%;
+        height: 500px;
+        padding: 5px;
+        /* background-color: aqua; */
+
+        box-shadow: blue 0px 0px 50px inset;
+      }
+      .cnt.hov {
+        transform: skew(5deg, 0);
+      }
+      .cnt.scaleP {
+        animation: scale-tableP 3s ease-in;
+      }
+      .cnt.scale {
+        animation: scale-table 3s ease-in;
+      }
+      .cnt:clicked {
+        transform: skew(5deg, 0);
+      }
+      .left {
+        width: 30%;
+        height: 100%;
+        /* background-color: rgb(0, 255, 21); */
+        margin-right: 5%;
+      }
+      .right {
+        height: 500px;
+        /* width: 65%; */
+        width: 46%;
+        border-radius: 15px;
+        padding: 30px;
+        overflow-y: scroll;
+        border: 5px solid purple;
+        /* background-color: rgb(255, 0, 191); */
+      }
+      /* .right .img-wrapper {
+        padding: 10px;
+        height: 100%;
+        width: 100%;
+        overflow-y: visible;
+
+        /* background-color: rgb(255, 0, 191); */
+
+      .right,
+      .left {
+        display: inline-block;
+      }
+      .left p {
+        column-count: 3;
+        column-rule-width: 3px;
+        column-rule-color: red;
+        column-rule-style: solid;
+        border: 5px solid black;
+        border-radius: 15px;
+        overflow-x: scroll;
+        padding: 40px 0;
+        height: 480px;
+      }
+      .left p:hover {
+        text-decoration: underline;
+      }
+      .cover {
+        float: left;
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+        /* margin: 5px auto; */
+        object-fit: contain;
+        border-radius: 5px;
+        border: 5px solid green;
+        box-shadow: pink 10px 10px 10px;
+        transition: all 0.3s ease-in;
+      }
+      .cover img {
+        height: 100%;
+        width: 100%;
+      }
+      .cover:hover.bigger {
+        position: relative;
+        z-index: 3;
+        transform: scale(1.5);
+      }
+      .cover:hover {
+        transform: scale(1.1);
+        /* transform: scale(1.5); */
+
+        border-style: double;
+        box-shadow: rgb(8, 40, 219) 10px 10px 10px;
+        /* box-shadow: rgb(167, 179, 12) 10px 10px 10px; */
+      }
+
+      span {
+        background-color: red;
+      }
+      .cover:hover.narrow-click {
+        border-style: dashed;
+        box-shadow: orange 10px 10px 10px;
+      }
+      @keyframes scale-table {
+        0% {
+          transform: scale(1);
+          transform: skew(5deg, 0);
+        }
+
+        50% {
+          transform: scale(0.5);
+        }
+
+        100% {
+          transform: scale(1);
+          transform: skew(5deg, 0);
+        }
+      }
+      @keyframes scale-tableP {
+        0% {
+          transform: scale(1);
+          /* transform: skew(5deg, 0); */
+        }
+
+        50% {
+          transform: scale(0.5);
+        }
+
+        100% {
+          transform: scale(1);
+          /* transform: skew(5deg, 0); */
+        }
+      }
+      p {
+        text-align: center;
+      }
+
+      span {
+        /* display: inline-block; */
+        text-align: center;
+        background-color: blue;
+      }
+      span:hover {
+        /* display: inline-block; */
+
+        background-image: linear-gradient(to bottom, green, yellow);
+      }
+      @media only screen and (max-width: 710px) {
+        .right {
+          width: 30%;
+          /* background-color: brown; */
+        }
+        .left {
+          width: 40%;
+          /* background-color: brown; */
+        }
+      }
+      @media only screen and (max-width: 660px) {
+        .cover {
+          transform: rotate(15deg);
+        }
+        .cover:hover {
+          transform: rotate(0deg);
+          transform: scale(1.2);
+        }
+        span {
+          background-color: aqua;
+        }
+      }
+      /* @media only screen and (min-width: 515px) {
+        .right {
+          width: 40%;
+          /* background-color: brown; */
+      /* } */
+    </style>
+  </head>
+  <body>
+    <div class="cnt">
+      <table>
+        <tr>
+          <td class="left">
+            <p>
+              consectetur adipisicing elit. Provident nisi dolore dolorem
+              praesentium quod iure, alias aspernatur voluptatum non numquam
+              necessitatibus voluptatem enim cum, sunt, quas error ipsum
+              consequatur magnam? Lorem ipsum dolor sit ametconsectetur
+              <span>
+                adipisicing elit. Provident nisi dolore dolorem praesentium quod
+                adipisicing elit. Provident nisi dolore dolorem praesentium quod
+                iure, alias aspernatur voluptatum non numquam necessitatibus
+                enim cum, sunt, quas error ipsum consequatur
+              </span>
+              magnam? Lorem ipsum dolor cum, sunt, quas error ipsum consequatur
+              magnam? Lorem ipsum dolor cum, sunt, quas error ipsum consequatur
+              magnam? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Provident nisi dolore
+            </p>
+          </td>
+          <td class="right">
+            <div class="cover">
+              <img src="flag.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="male.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="female.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="flag.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="male.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="female.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="flag.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="male.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="female.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="flag.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="male.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="female.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="flag.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="male.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="female.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="flag.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="male.png" alt="" />
+            </div>
+            <div class="cover">
+              <img src="female.png" alt="" />
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      let imgCont = document.querySelector(".right");
+      let tableCnt = document.querySelector(".cnt");
+      tableCnt.addEventListener("mouseenter", function (e) {
+        if (imgCont.clientWidth > 445) {
+          console.log(this);
+          this.classList.add("hov");
+        }
+      });
+      tableCnt.addEventListener("mouseleave", function (e) {
+        this.classList.remove("hov");
+      });
+      tableCnt.addEventListener("click", (e) => {
+        // console.log(e.target);
+        // console.log(imgCont);
+
+        if (e.target.closest(".cover") && imgCont.clientWidth < 200) {
+          // let imgs = imgCont.children.slice();
+          // console.log(imgs);
+          // imgCont.childNodes.forEach((element) => {
+          //   element.classList.remove("narrow-click");
+          // });
+          e.target.closest(".cover").classList.add("narrow-click");
+          setTimeout(() => {
+            e.target.closest(".cover").classList.remove("narrow-click");
+          }, 2000);
+          // e.target.closest(".cover").classList.add("narrow-click");
+        } else if (e.target.nodeName === "SPAN") {
+          tableCnt.classList.add("scaleP");
+          setTimeout(() => {
+            tableCnt.classList.remove("scaleP");
+          }, 3000);
+        } else {
+          tableCnt.classList.add("scale");
+          setTimeout(() => {
+            tableCnt.classList.remove("scale");
+          }, 3000);
+        }
+        if (imgCont.clientWidth > 200 && e.target.closest(".cover")) {
+          let cvr = e.target.parentElement;
+          cvr.classList.add("bigger");
+          setTimeout(() => {
+            cvr.classList.remove("bigger");
+          }, 3000);
+
+          // console.log();
+        }
+      });
+    </script>
+  </body>
+</html>

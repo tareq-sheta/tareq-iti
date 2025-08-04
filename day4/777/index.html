@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      h2 {
+        color: red;
+      }
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>show different locales</h1>
+    <script>
+      var num = +prompt("Enter a number:");
+
+      document.write(`<h1>${num.toLocaleString("en-US")}</h1>`);
+      document.write(`<h1>${num.toLocaleString("de-DE")}</h1>`);
+      document.write(`<h1>${num.toLocaleString("ar-eg")}</h1>`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      *,
+      *::after,
+      *::before {
+        padding: 0;
+        margin: 0;
+        text-transform: capitalize;
+      }
+      body {
+        background-color: beige;
+      }
+      .cont {
+        width: 100%;
+        
+        margin: auto;
+        padding: 10px;
+      }
+      .sub-cont {
+        padding: 30px;
+        background-color: lightgray;
+      }
+      .sub-cont{
+        position:relative;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+        height:70px;
+	width:90%;
+      }
+      .sub-cont>*{
+        position:absolute;
+
+
+      }
+      .sub-cont >img {
+	top:30%;
+        height:40%;
+        left:10px;
+      }
+      .sub-cont >button {
+	top:45%;
+	width:100Px;
+	padding:5px ;
+        right:1px;
+      }
+      .sub-cont > div {
+	top:30%;
+        left: 10%;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+	<div class="sub-cont">		
+	  <img src="../1234.png" alt="image1">
+		<div>
+		<h3>sub-header</h3><br>
+		<p>this is aparagraph qweqweqweqweqweqeqweqweqweqwe</p>
+		</div>
+	       <button>submit</button>
+	</div>
+	<div class="sub-cont">		
+	  <img src="../1234.png" alt="image1">
+		<div>
+		<h3>sub-header</h3><br>
+		<p>this is aparagraph qweqweqweqweqweqeqweqweqweqwe</p>
+		</div>
+	       <button>submit</button>
+	</div>
+	<div class="sub-cont">		
+	  <img src="../1234.png" alt="image1">
+		<div>
+		<h3>sub-header</h3><br>
+		<p>this is aparagraph qweqweqweqweqweqeqweqweqweqwe</p>
+		</div>
+	       <button>submit</button>
+	</div>
+    </div>
+  </body>
+</html>

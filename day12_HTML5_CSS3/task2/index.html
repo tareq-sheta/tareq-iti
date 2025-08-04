@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        background-color: bisque;
+      }
+      .buttons-cont {
+        width: 100%;
+        height: 50px;
+      }
+      button {
+        padding: 10px;
+        margin: 0 20px;
+      }
+      .block {
+        width: 50px;
+        height: 50px;
+        margin-top: 0px;
+        margin-left: 0px;
+        background-color: brown;
+        animation: 3s linear 1s infinite running rotate-block;
+      }
+      .block:hover {
+        transform: scale(1.5);
+        animation-play-state: paused;
+      }
+      .block.stop {
+        animation-play-state: paused;
+      }
+      @keyframes rotate-block {
+        0% {
+          margin-top: 0px;
+          margin-left: 0px;
+          background-color: red;
+        }
+        25% {
+          margin-top: 100px;
+          margin-left: 0px;
+          background-color: yellow;
+        }
+        50% {
+          margin-top: 100px;
+          margin-left: 100px;
+          background-color: green;
+        }
+        75% {
+          margin-top: 0px;
+          margin-left: 100px;
+          background-color: blue;
+        }
+        100% {
+          margin-top: 0px;
+          margin-left: 0px;
+          background-color: red;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="buttons-cont">
+        <button>start</button>
+        <button>stop</button>
+      </div>
+      <div class="block-cont">
+        <div class="block"></div>
+      </div>
+    </div>
+    <script>
+      let block = document.querySelector(".block");
+      let startBtn = document.querySelectorAll("button")[0];
+      let stopBtn = document.querySelectorAll("button")[1];
+      startBtn.addEventListener("click", (e) => {
+        block.classList.remove("stop");
+      });
+      stopBtn.addEventListener("click", (e) => {
+        block.classList.add("stop");
+      });
+    </script>
+  </body>
+</html>

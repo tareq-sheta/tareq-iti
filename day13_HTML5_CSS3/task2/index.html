@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .cont {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      ul li {
+        display: inline-block;
+      }
+      nav ul {
+        width: 95vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
+        width: 100%;
+        height: 15vh;
+        background-color: rgb(160, 160, 218);
+
+        padding: 5px 0;
+      }
+      a {
+        display: inline-block;
+        padding: 10px;
+        text-decoration: none;
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 85vh;
+        background-color: rgb(160, 218, 168);
+      }
+      header form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-left: 50px;
+        justify-content: space-around;
+        align-items: start;
+        width: 200px;
+        height: 100px;
+        background-color: rgb(46, 190, 66);
+        border-radius: 10px;
+      }
+      header form button {
+        padding: 10px;
+        background-image: linear-gradient(
+          to right,
+          transparent,
+          rgb(31, 126, 43)
+        );
+        border: 1px solid rgb(31, 126, 43);
+        border-radius: 10px;
+      }
+      header form button:hover {
+        background-image: linear-gradient(
+          to left,
+          transparent,
+          rgb(31, 126, 43)
+        );
+      }
+      .map-grid p {
+        background-color: #f6f5f5;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        /* padding: 15px; */
+        height: 100%;
+      }
+      .b.stle,
+      #main.stle {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        color: blueviolet;
+        font-style: italic;
+      }
+      .b.stle {
+        color: rgb(43, 226, 141);
+      }
+      section h1 {
+        margin-top: 50px;
+        padding: 5px;
+      }
+      section p {
+        /* margin-bottom: 50px; */
+        padding: 5px;
+      }
+      section {
+        margin: 0 auto;
+      }
+      /* section > p > img {
+        position: relative;
+        height: 10px;
+        /* bottom: -3px; */
+      */ section {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        /* width: 100vw; */
+        /* height: 100vh; */
+        background-color: aqua;
+      }
+      .map-grid {
+        display: grid;
+        width: 60vw;
+
+        padding: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+      }
+      .map-grid > img {
+        grid-row: 1/5;
+        grid-column: 1/2;
+        height: 100%;
+        object-fit: contain;
+      }
+      p > img {
+        position: relative;
+        height: 20px;
+      }
+      .filter {
+        display: flex;
+        padding-right: 20px;
+        justify-content: end;
+      }
+      .filter span {
+        margin: 5px;
+      }
+      footer {
+        display: flex;
+        gap: 150px;
+        justify-content: start;
+        margin-top: 100px;
+        align-items: start;
+        height: 200px;
+        width: 100%;
+        background-color: rgb(133, 132, 132);
+        padding: 10px;
+        padding-top: 20px;
+      }
+      footer .left {
+        padding-left: 50px;
+        width: 50%;
+      }
+      footer .left h2 {
+        padding: 10px;
+      }
+      footer .left p {
+        padding: 5px;
+        padding-left: 10px;
+      }
+      .icon {
+        width: 50px; /* You can use any size */
+        height: 50px; /* Must match the width for a perfect circle */
+
+        border-radius: 50%;
+        margin-right: 10px;
+        /* background-image: url("./fbook.png"); */
+
+        background-size: cover; /* This is crucial. It scales the image to cover the entire div without distorting it. */
+        background-position: center; /* This centers the image within the div. */
+        background-repeat: no-repeat; /* Prevents the image from repeating if it's smaller than the div. */
+
+        border: 2px solid #ccc;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+      .social {
+        display: flex;
+        margin-top: 20px;
+      }
+      .one {
+        background-image: url("./fbook.png");
+      }
+      .two {
+        background-image: url("./twtr.png");
+      }
+      .three {
+        background-image: url("./utbe.png");
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+      <nav>
+        <ul>
+          <li><a href="">home</a></li>
+          <li><a href="">programs</a></li>
+          <li><a href="">about</a></li>
+          <li><a href="">signin</a></li>
+          <li><a href="">home</a></li>
+        </ul>
+      </nav>
+      <header>
+        <form action="">
+          <p>please sign in</p>
+          <button>register</button>
+        </form>
+      </header>
+      <section>
+        <h1>iti locations</h1>
+        <p>iti main locations over the country</p>
+        <div class="map-grid">
+          <img src="icondmap.png" alt="" />
+          <p id="main"><img src="icond.png" alt="" /> ITI - Main</p>
+          <p class="b"><img src="icond.png" alt="" />ITI - one</p>
+          <p class="b"><img src="icond.png" alt="" />ITI - two</p>
+          <p class="b"><img src="icond.png" alt="" />ITI - three</p>
+          <p class="b"><img src="icond.png" alt="" />ITI - four</p>
+          <p class="b"><img src="icond.png" alt="" />ITI - five</p>
+          <p class="b"><img src="icond.png" alt="" />ITI - six</p>
+          <p class="b"><img src="icond.png" alt="" />ITI - seven</p>
+        </div>
+        <div class="filter">
+          <span>main</span> <input type="checkbox" name="main" />
+          <span>other</span>
+          <input type="checkbox" name="other" />
+        </div>
+      </section>
+      <footer>
+        <div class="left">
+          <h2>contact</h2>
+          <p>
+            📍 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Accusantium, voluptas.ipsum dolor sit amet, consectetur
+          </p>
+          <p>☎️ consectetur adipisicing elit. Accusantium, voluptas</p>
+          <p>📧 ipsum dolor sit amet, consectetur</p>
+        </div>
+        <div class="right">
+          <h2>follow us</h2>
+          <div class="social">
+            <div class="icon one"></div>
+            <div class="icon two"></div>
+            <div class="icon three"></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      let oBranches = document.querySelectorAll(".b");
+      let mainBranch = document.querySelector("#main");
+      let mainBtn = document.querySelector("input[name=main]");
+      let othrBtn = document.querySelector("input[name=other]");
+      console.log(mainBtn.checked);
+      mainBtn.addEventListener("click", (e) => {
+        // console.log("click");
+        // console.log(e.target);
+        if (e.target.checked) {
+          othrBtn.checked = false;
+          oBranches.forEach((ele) => {
+            ele.classList.remove("stle");
+          });
+          mainBranch.classList.add("stle");
+        } else {
+          mainBranch.classList.remove("stle");
+        }
+      });
+      othrBtn.addEventListener("click", (e) => {
+        if (e.target.checked) {
+          mainBtn.checked = false;
+          mainBranch.classList.remove("stle");
+          oBranches.forEach((ele) => {
+            ele.classList.add("stle");
+          });
+        } else {
+          oBranches.forEach((ele) => {
+            ele.classList.remove("stle");
+          });
+        }
+      });
+      // let othrBtn = document.querySelector("input[name='other']:chicked");
+      console.log(mainBtn);
+    </script>
+  </body>
+</html>

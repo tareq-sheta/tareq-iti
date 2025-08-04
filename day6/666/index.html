@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1,
+      h3,
+      p {
+        text-align: center;
+      }
+      input {
+        padding: 5px;
+        width: 70%;
+      }
+      span,
+      button {
+        color: aliceblue;
+        border: 0;
+        font-family: "Times New Roman", Times, serif;
+
+        padding: 5px;
+      }
+
+      button {
+        padding-inline: 15px;
+        font-size: 20px;
+      }
+      div {
+        margin: 0 auto;
+        width: 500px;
+      }
+      img {
+        display: block;
+        border: 5px solid yellow;
+        width: 100px;
+        margin: 0 auto;
+      }
+      h3 p {
+        display: inline-block;
+        width: 190px;
+      }
+      .sub-cont {
+        width: 70%;
+        margin: 0 auto;
+      }
+      form {
+        display: inline-block;
+        width: 100%;
+      }
+      .sub-cont p {
+        width: 73%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>bottle game</h1>
+      <img src="../male.png" alt="" />
+    </div>
+    <p>
+      this game iscalled bottle game it takes an array and return another with
+      random elements from the first one
+    </p>
+    <br />
+    <p>array</p>
+    <div class="sub-cont">
+      <h3>
+        <!-- <form action="index.html"> -->
+        <button onclick="process()" style="background-color: green">
+          input
+        </button>
+        <!-- <input  type="text" /> -->
+        <input type="text" name="arr" />
+        <!-- </form> -->
+      </h3>
+      <h3>
+        <span style="background-color: blue">output</span>
+
+        <p id="results"></p>
+      </h3>
+    </div>
+
+    <script>
+      function isPureStringUniqueArr(arr) {
+        // var t = arr.toString()
+        for (let i = 0; i < arr.length; i++) {
+          if (!isPureString(arr[i])) return false;
+          if (arr.indexOf(arr[i]) !== arr.lastIndexOf(arr[i])) return false;
+        }
+        return true;
+      }
+      function isPureString(str) {
+        if (str.length === 0) return false;
+
+        for (let i = 0; i < str.length; i++) {
+          const char = str[i];
+          if (char >= "0" && char <= "9") {
+            return false;
+          }
+        }
+
+        return true;
+      }
+      function getRanArr(arr) {
+        let o = [];
+
+        let r = Math.floor(Math.random() * arr.length); // number from 0 to 4
+        o.push(arr[r]);
+
+        for (let i = 1; i < 2; i++) {
+          do {
+            r = Math.floor(Math.random() * arr.length);
+          } while (o.indexOf(arr[r]) > -1);
+          o.push(arr[r]);
+        }
+        // console.log(o);
+        return o;
+      }
+      function process() {
+        let arr = document.getElementsByTagName("input")[0].value;
+        do {
+          if (!arr) {
+            // alert("please enter an array");
+            return false;
+          }
+          console.log(arr, "arr1");
+          arr = arr.split(",");
+          console.log(arr, "arr2");
+          // arr =
+          //   arr.indexOf("[") > -1 && arr.indexOf("]") > -1
+          //     ? arr.slice(1, arr.length - 1).split(",")
+          //     : arr.split(",");
+          if (!isPureStringUniqueArr(arr)) {
+            alert("please enter only valid unique names array");
+            document.getElementsByTagName("input")[0].value = "";
+            arr = "";
+          }
+        } while (!isPureStringUniqueArr(arr));
+
+        console.log(arr, "arr");
+        console.log(getRanArr(arr), "arr");
+
+        // document.getElementById("results").textContent = `[ ${[
+        //   11, 22, 33,
+        // ].toString()} ]`;
+        document.getElementById("results").textContent = `[ ${getRanArr(
+          arr
+        )} ]`;
+      }
+    </script>
+  </body>
+</html>

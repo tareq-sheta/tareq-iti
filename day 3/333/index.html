@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <style>
+      *,
+      *::after,
+      *::before {
+        padding: 0;
+        margin: 0;
+        text-transform: capitalize;
+
+        color: black;
+      }
+      a {
+        color: red;
+      }
+      body {
+        background-color: beige;
+        background-image: url("../1234.png");
+        display: flex;
+        padding: 50px;
+        justify-content: center;
+        align-items: center;
+        background-repeat: repeat;
+        background-size: 10px;
+      }
+      .sec1,
+      .sec2,
+      .sec3,
+      .footer {
+        border: 5px solid gray;
+        margin: 10px 0;
+      }
+      .cont {
+        width: 90%;
+        margin: auto;
+        background-color: white;
+        border: 15px solid gray;
+        border-style: groove;
+        padding: 50px;
+      }
+      .sec1 {
+        padding: 30px;
+        background-color: rgb(201, 44, 188);
+        height: 50px;
+      }
+      .sec1 img {
+        width: 50px;
+        float: left;
+      }
+      .sec1 img:last-child {
+        float: right;
+        position: relative;
+        top: -35px;
+      }
+      .sec1 p {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .sec2 {
+        padding: 30px;
+        background-color: violet;
+      }
+      .sec3 {
+        padding: 15px 90px;
+        background-color: violet;
+      }
+      .sec3 > * {
+        margin: 30px 0;
+        background-color: violet;
+      }
+      .sec3 > a {
+        font-size: 35px;
+        color: black;
+        background-color: violet;
+      }
+      .footer {
+        padding: 30px;
+        background-color: violet;
+        text-align: center;
+      }
+      .small-link {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+      <div class="sec1">
+        <img src="../1234.png" alt="img1" />
+        <p>qweqweqweqweweweqweqweqwweqweqwew</p>
+        <img src="../1234.png" alt="img1" />
+      </div>
+      <div class="sec2">
+        <a href="#">qweqweweqweqweqweqweqweweqweqweqweqweweweqweq</a>
+      </div>
+      <div class="sec3">
+        <a href="#">introduction</a>
+        <p>
+          <span style="font-weight: 700">qwydgqwodyuqgdqgdyqd</span
+          >gqwydgwydgqwwwwwwwwwwwwwwwwwwwwwwwwwwww<br />wwwwwgqwywuuqwuqyw
+        </p>
+        <a href="#">Calculator</a>
+        <div class="samll-link">
+          <img
+            style="
+              width: 35px;
+              position: relative;
+              bottom: -15px;
+              margin: 0 15px;
+            "
+            src="../1234.png"
+            alt=""
+          /><a href="#">qqqqqqqqwwwww</a>
+        </div>
+        <div class="samll-link">
+          <img
+            style="
+              width: 35px;
+              position: relative;
+              bottom: -15px;
+              margin: 0 15px;
+            "
+            src="../1234.png"
+            alt=""
+          /><a href="#">qqqqqqqqwwwww</a>
+        </div>
+      </div>
+      <div class="footer">foooooooter eeeeeeeeeeeeeeeee</div>
+    </div>
+  </body>
+</html>
