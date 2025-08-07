@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      .container,
+      .content {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        list-style: none;
+      }
+      .header li {
+        border-bottom: 3px solid black;
+      }
+      .container {
+        padding: 10px;
+        background-color: rgb(197, 197, 219);
+        flex-direction: column;
+        width: 90%;
+      }
+      .content {
+        flex-direction: column;
+        /* background-color: blueviolet; */
+        width: 100%;
+      }
+      li {
+        padding: 10px 0;
+        padding-left: 5px;
+        /* background-color: aqua; */
+        width: 300px;
+      }
+
+      .content li {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="header">
+        <li>id</li>
+        <li>name</li>
+        <li>email</li>
+        <li>phone</li>
+        <li>website</li>
+      </ul>
+      <ul class="content"></ul>
+    </div>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

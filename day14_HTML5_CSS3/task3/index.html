@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container,
+      .top,
+      .bottom {
+        border: 2px solid rgb(115, 255, 0);
+        box-shadow: 0px 0px 75px inset rgba(228, 8, 228, 0.5);
+        display: flex;
+        border-radius: 10px;
+      }
+      .container {
+        border: 2px solid red;
+        flex-direction: column;
+        padding: 50px;
+        width: 75vw;
+        height: 600px; /* <--- This is the key change */
+        margin: 50px auto;
+        gap: 20px;
+      }
+      #map {
+        flex: 1;
+        /* The map's height will now be handled by flexbox */
+      }
+      .hidden {
+        display: none;
+      }
+      .top,
+      .bottom {
+        justify-content: space-evenly;
+        padding: 50px;
+      }
+
+      .bottom {
+        height: 200px;
+        padding: 50px;
+      }
+      #info {
+        background-color: rgb(252, 145, 145);
+        border: 2px solid blue;
+        box-shadow: 0px 0px 50px inset gray;
+        padding: 15px;
+        border-radius: 15px;
+      }
+      #info p {
+        width: 90%;
+        padding: 5px;
+        margin: 0 auto;
+        cursor: pointer;
+      }
+
+      #info *:nth-child(odd) {
+        /* background-color: aqua; */
+        text-align: center;
+      }
+      #info *:nth-child(even) {
+        background-color: rgb(0, 255, 106);
+      }
+      .leaflet-bottom.leaflet-right {
+        display: none;
+      }
+      .top p {
+        padding: 10px 25px;
+        /* color: aliceblue; */
+        background-color: rgb(54, 0, 116);
+        border: 2px groove red;
+        background-image: linear-gradient(to bottom, pink, yellow);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.5s ease-in;
+      }
+      .top p:hover {
+        transform: scale(1.3) skew(20deg);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top">
+        <p class="showMap">display map</p>
+        <p class="showInfo">more info</p>
+      </div>
+      <div id="map"></div>
+      <div id="info" class="hidden">
+        <p>latitude</p>
+        <p></p>
+        <p>longitude</p>
+        <p></p>
+        <p>accuracy</p>
+        <p></p>
+        <p>timestamp</p>
+        <p></p>
+      </div>
+    </div>
+
+    <script type="module">
+      let coords = await getCoords();
+      let geoData = {
+        latitude: coords.coords.latitude,
+        longitude: coords.coords.latitude,
+        accuracy: coords.coords.accuracy,
+        timestamp: new Date(coords.timestamp),
+      };
+      var map = L.map("map").setView([geoData.latitude, geoData.longitude], 13);
+
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+      }).addTo(map);
+
+      var marker = L.marker([geoData.latitude, geoData.longitude]).addTo(map);
+      function getCoords() {
+        return new Promise((resolve) => {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+
+              // console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+              resolve(position);
+            },
+            () => {
+              alert("failed to get position ::: >:(");
+            }
+          );
+        });
+      }
+      let mapBtn = document.querySelector(".showMap");
+      let infoBtn = document.querySelector(".showInfo");
+      console.log(coords);
+      console.log(geoData);
+      mapBtn.addEventListener("click", (e) => {
+        document.querySelector("#map").classList.remove("hidden");
+        document.querySelector("#info").classList.add("hidden");
+        console.log("maaaap");
+      });
+      infoBtn.addEventListener("click", (e) => {
+        document.querySelector("#map").classList.add("hidden");
+        document.querySelector("#info").classList.remove("hidden");
+        console.log("infooooo");
+      });
+      let coordValues = document.querySelectorAll("#info *:nth-child(even)");
+      coordValues[0].textContent = geoData.latitude;
+      coordValues[1].textContent = geoData.longitude;
+      coordValues[2].textContent = geoData.accuracy;
+      coordValues[3].textContent = geoData.timestamp;
+    </script>
+  </body>
+</html>
