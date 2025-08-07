@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      /* :root {
+        --btnColor: rgb(14, 0, 92);
+      } */
+
+      .container,
+      .left,
+      .right {
+        border: 2px solid rgb(115, 255, 0);
+        box-shadow: 0px 0px 75px inset rgba(228, 8, 228, 0.5);
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+      }
+      .left,
+      .right {
+        width: 50%;
+        height: 130px;
+        justify-content: end;
+        padding: 15px;
+      }
+      /* .left > *,
+      .right > * {
+        align-self: baseline;
+      } */
+      .container {
+        border: 2px solid red;
+        flex-direction: row;
+        border-radius: 20px 0px 20px 0px;
+        padding: 50px;
+        width: 95vw;
+        margin: 50px auto;
+        gap: 20px;
+      }
+      p {
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+      span {
+        margin: 5px;
+      }
+      input {
+        padding: 5px;
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <p>summation</p>
+        <div class="sum">
+          <input type="number" /><span>+</span><input type="number" /><span
+            >=</span
+          ><span class="result">0</span>
+        </div>
+      </div>
+      <div class="right">
+        <p>multiplication</p>
+        <div class="mul">
+          <input type="number" /><span>x</span><input type="number" />
+          <span>=</span><span class="result">0</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      let sum1, sum2, mul1, mul2;
+
+      sum1 = document.querySelectorAll(".sum input")[0];
+      sum1.value = +sum1 || 0;
+      sum2 = document.querySelectorAll(".sum input")[1];
+      sum2.value = +sum2 || 0;
+      mul1 = document.querySelectorAll(".mul input")[0];
+      mul1.value = +mul1 || 0;
+      mul2 = document.querySelectorAll(".mul input")[1];
+      mul2.value = +mul2 || 0;
+      let sumRes = document.querySelector(".sum .result");
+      let mulRes = document.querySelector(".mul .result");
+      sum1.addEventListener("change", () => {
+        sumRes.textContent =
+          +document.querySelectorAll(".sum input")[0].value +
+          +document.querySelectorAll(".sum input")[1].value;
+      });
+      sum2.addEventListener("change", () => {
+        sumRes.textContent =
+          +document.querySelectorAll(".sum input")[0].value +
+          +document.querySelectorAll(".sum input")[1].value;
+      });
+      mul1.addEventListener("change", () => {
+        mulRes.textContent =
+          +document.querySelectorAll(".mul input")[0].value *
+          +document.querySelectorAll(".mul input")[1].value;
+      });
+      mul2.addEventListener("change", () => {
+        mulRes.textContent =
+          +document.querySelectorAll(".mul input")[0].value *
+          +document.querySelectorAll(".mul input")[1].value;
+      });
+    </script>
+  </body>
+</html>
