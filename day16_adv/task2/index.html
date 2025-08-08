@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      function Account(_balance) {
+        this.balance = _balance;
+      }
+      // -----------------------------
+
+      Account.prototype.credit = function (num) {
+        if (isNaN(num) || num < 0) {
+          console.log("enter a positive numeric value");
+          return false;
+        }
+        this.balance += num;
+        return true;
+      };
+
+      Account.prototype.debit = function (num) {
+        if (isNaN(num) || num < 0) {
+          console.log("enter a positive numeric value");
+          return false;
+        }
+        if (num > this.balance) {
+          console.log("debit shall not exceeded balance");
+          return false;
+        }
+        this.balance -= num;
+        return true;
+      };
+
+      Account.prototype.getBalance = function () {
+        console.log(this.balance);
+      };
+
+      // ------------------------------
+
+      function SavingsAccount(_balance, _rate = 0) {
+        Account.call(this, _balance);
+        this.rate = _rate;
+      }
+
+      SavingsAccount.prototype = Object.create(Account.prototype);
+      SavingsAccount.prototype.constructor = SavingsAccount;
+
+      SavingsAccount.prototype.calcInterest = function () {
+        // let num = this.balance * this.rate;
+        // console.log("interest1 = " + this.rate);
+        // console.log("interest2 = " + this.balance);
+        console.log("interest = " + this.balance * this.rate);
+        // return n;
+      };
+      // ------------------------------
+      function CheckingAccount(_balance, _fee) {
+        Account.call(this, _balance);
+        this.fee = _fee;
+      }
+
+      CheckingAccount.prototype = Object.create(Account.prototype);
+      CheckingAccount.prototype.constructor = CheckingAccount;
+
+      CheckingAccount.prototype.credit = function (num) {
+        // console.log("color from Shape");
+        let isDone = this.__proto__.__proto__.credit.call(this, num);
+        if (isDone) {
+          this.balance = this.balance - this.fee;
+        } else {
+          console.log("error: transaction isn't done");
+        }
+      };
+      CheckingAccount.prototype.debit = function (num) {
+        if (isNaN(num) || num < 0) {
+          console.log("enter a positive numeric value");
+          return;
+        }
+        if (num > this.balance) {
+          console.log("debit shall not exceeded balance");
+          return;
+        }
+        let isDone = this.__proto__.__proto__.debit.call(this, num);
+        if (isDone) {
+          this.balance = this.balance - this.fee;
+        } else {
+          console.log("error: transaction isn't done");
+        }
+      };
+      let regAcc = new Account(1000);
+      let savAcc = new SavingsAccount(1200, 0.1);
+      let chekAcc = new CheckingAccount(1500, 20);
+      // ------------------------------
+    </script>
+  </body>
+</html>
