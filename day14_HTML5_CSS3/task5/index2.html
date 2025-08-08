@@ -22,33 +22,19 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       let cntxt = canvas.getContext("2d");
-      let d = false;
+      cntxt.fillStyle = "pink";
 
-      canvas.addEventListener("mousemove", (e) => {
-        if (d) {
-          const rect = canvas.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          cntxt.beginPath();
-          cntxt.arc(x, y, 15, 0, Math.PI * 2);
-          cntxt.fill();
-          cntxt.closePath();
-        }
-      });
-
-      canvas.addEventListener("mousedown", (e) => {
-        d = true;
+      canvas.addEventListener("click", (e) => {
+        // d = true;
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         cntxt.beginPath();
-        cntxt.arc(x, y, 15, 0, Math.PI * 2);
+        // cntxt.arc(x, y, 15, 0, Math.PI * 2);
+        cntxt.rect(x, y, 30, 30);
         cntxt.fill();
+        cntxt.fillStyle = "pink";
         cntxt.closePath();
-      });
-
-      canvas.addEventListener("mouseup", (e) => {
-        d = false;
       });
     </script>
   </body>

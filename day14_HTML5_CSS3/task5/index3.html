@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      let canvas = document.querySelector("canvas");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      let cntxt = canvas.getContext("2d");
+      let d = false;
+
+      canvas.addEventListener("mousemove", (e) => {
+        if (d) {
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          cntxt.beginPath();
+          // cntxt.arc(x, y, 15, 0, Math.PI * 2);
+          cntxt.rect(x, y, 15, 15);
+          cntxt.fill();
+          cntxt.fillStyle = "red";
+          cntxt.closePath();
+        }
+      });
+
+      canvas.addEventListener("mousedown", (e) => {
+        d = true;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        cntxt.beginPath();
+        // cntxt.arc(x, y, 15, 0, Math.PI * 2);
+        cntxt.rect(x, y, 15, 15);
+        cntxt.fill();
+        cntxt.fillStyle = "red";
+        cntxt.closePath();
+        // cntxt.clearRect();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "p") {
+          cntxt.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      });
+
+      canvas.addEventListener("mouseup", (e) => {
+        d = false;
+      });
+    </script>
+  </body>
+</html>
