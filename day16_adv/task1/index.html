@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      let person = {
+        id: 1,
+        name: "empty",
+      };
+      let employee = {
+        salary: 1000,
+      };
+      let HRemployee = {
+        location: "cairo",
+      };
+      employee.__proto__ = person;
+      HRemployee.__proto__ = employee;
+      console.log("person OBJ", person);
+      console.log("employee OBJ", employee);
+      console.log("HRemployee OBJ", HRemployee);
+      console.log("-----------------\n");
+      console.log(
+        "HRemployee",
+        HRemployee.id,
+        "accessible through prototype chain"
+      );
+      console.log(
+        "HRemployee",
+        HRemployee.name,
+        "accessible through prototype chain"
+      );
+      HRemployee.id = 2;
+      HRemployee.name = "ali";
+      console.log(
+        "person",
+        person.id,
+        "not accessible through prototype chain(only object)"
+      );
+      console.log(
+        "person",
+        person.name,
+        "not accessible through prototype chain(only object)"
+      );
+      person.age = 25;
+
+      console.log(
+        "HRemployee",
+        HRemployee.age,
+        "accessible through prototype chain"
+      );
+    </script>
+  </body>
+</html>

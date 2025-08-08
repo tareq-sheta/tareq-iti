@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      function Shape(_color) {
+        this.color = _color;
+        // PrintColor = function () {
+        //   console.log("color from Shape");
+        // };
+      }
+      // -----------
+      Shape.prototype.PrintColor = function () {
+        console.log("color from Shape");
+      };
+      Rect.prototype.calcArea = function () {
+        console.log("zero");
+      };
+      Rect.prototype.calcPerimeter = function () {
+        console.log("zero");
+      };
+      // ------------------------------
+      // ------------------------------
+      // ------------------------------
+
+      function Rect(_height, _width) {
+        this.height = _height;
+        this.width = _width;
+        Rect.numOfObj++;
+      }
+      Rect.numOfObj = 0;
+      Rect.displayNumOfObj = function () {
+        return this.numOfObj;
+      };
+      // -----------
+      Rect.prototype = Object.create(Shape.prototype);
+
+      Rect.prototype.calcArea = function () {
+        console.log("area : ", +this.height * +this.width);
+      };
+      Rect.prototype.calcPerimeter = function () {
+        console.log(
+          "perimeter : ",
+          this.height + this.height + this.width + this.width
+        );
+      };
+      Rect.prototype.PrintColor = function () {
+        console.log("color from Rect");
+      };
+      Rect.prototype.toString = function () {
+        console.log("toString from Rect");
+        // console.log(this.color);
+      };
+
+      // --------------------------
+      // --------------------------
+      // --------------------------
+
+      function Square(_height) {
+        // Rect.call(Shape, _height, _height);
+        this.height = _height;
+        this.width = _height;
+        Square.numOfObj++;
+      }
+      // Square.displayNumOfObj = Rect.displayNumOfObj;
+      // // ----------
+      // Square.prototype.__proto__ = Rect.prototype;
+      Square.prototype = Object.create(Rect.prototype);
+      Square.prototype.constructor = Square;
+
+      Square.numOfObj = Rect.numOfObj;
+      Square.displayNumOfObj = Rect.displayNumOfObj.bind(Square);
+
+      let shape = new Shape("red");
+      let rect = new Rect(2, 3);
+      let rect1 = new Rect(2, 3);
+      let sqr = new Square(5);
+      let arr = [shape, rect, shape];
+      arr.forEach((e, i) => {
+        console.log("shape " + (i + 1) + " = ", e.calcArea);
+      });
+    </script>
+  </body>
+</html>
