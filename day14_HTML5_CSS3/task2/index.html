@@ -86,17 +86,19 @@
       topList.addEventListener("dragstart", function (e) {
         arrived = false;
         e.dataTransfer.setData("img", e.target.outerHTML);
+        console.log("start");
       });
 
       topList.addEventListener("dragend", function (e) {
         if (arrived) {
-          // console.log("horraaaay");
+          console.log("dragend");
           topList.removeChild(e.target);
         }
       });
       bottomList.addEventListener("dragleave", function (e) {
         e.preventDefault();
         arrived = false;
+        console.log("dragleave");
       });
       // bottomList.addEventListener("dropend", function (e) {
       //   e.preventDefault();
@@ -106,6 +108,7 @@
       bottomList.addEventListener("drop", function (e) {
         let topImgs = document.querySelectorAll(".top img");
         e.preventDefault();
+        console.log("drop");
         if (arrived) {
           // console.log("droped-bottom2222");
           bottomList.innerHTML += e.dataTransfer.getData("img");
