@@ -1,0 +1,53 @@
+@use "variables" as *;
+@use "mixin" as *;
+@use "sass:math";
+// @import "vars";
+$margins: ($small-margin, $large-margin);
+$bg: ($bg-secondary, $bg-primary);
+$fonts: ($large-font, $small-font);
+
+@for $i from 1 through 6 {
+  .style#{$i} {
+    margin: nth($margins, math.ceil(math.random(2)));
+    font-size: nth($fonts, math.ceil(math.random(2)));
+    background-color: nth($bg, math.ceil(math.random(2)));
+    @extend .base;
+  }
+}
+.shadow {
+  box-shadow: red 5px 5px 30px inset;
+}
+.center {
+  text-align: center;
+}
+.color {
+  color: white;
+}
+.base {
+  // box-shadow: red 5px 5px 30px inset;
+  @extend .shadow;
+  @extend .center;
+  @extend .color;
+}
+body {
+  // @extend .shadow;
+  background-color: violet;
+  @include isMobile() {
+    background-color: rgb(226, 43, 43);
+  }
+}
+
+@include isMobile() {
+  body {
+  }
+}
+@include isLaptop() {
+  body {
+    background-color: rgb(43, 226, 119);
+  }
+}
+@include isDesktop() {
+  body {
+    background-color: rgb(0, 47, 255);
+  }
+}

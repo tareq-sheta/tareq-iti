@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        font-size: 62.5%;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .cont {
+        /* width: 100vw; */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      ul li {
+        display: inline-block;
+      }
+      ul li a {
+        font-size: 15px;
+      }
+      nav {
+        /* padding: 20px; */
+        position: sticky;
+        top: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: white;
+      }
+      nav ul {
+        /* width: 95vw; */
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
+        /* width: 100%; */
+        height: 5vh;
+
+        /* padding: 5px 0; */
+      }
+      a {
+        display: inline-block;
+        padding: 10px;
+        text-decoration: none;
+      }
+      header {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        padding: 10px;
+        padding-inline: 2rem;
+        height: 160vh;
+        /* height: 160vh; */
+        background-color: white;
+        h1 {
+          font-size: 3rem;
+          text-transform: uppercase;
+          /* width: 50vw; */
+          padding: 1rem 0;
+          align-self: flex-start;
+        }
+        h2 {
+          font-size: 1.6rem;
+          padding: 1rem 0;
+          font-weight: 500;
+        }
+        .header_left {
+          padding: 30px;
+          width: 100%;
+          height: 80vh;
+        }
+        .header_right {
+          width: 100%;
+          height: 80vh;
+          background-image: url("icondmap.png");
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+      form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: start;
+        max-width: 500px;
+        height: 100px;
+
+        border-radius: 10px;
+      }
+      form button {
+        padding: 10px;
+        width: 100%;
+        background-image: linear-gradient(
+          to right,
+          transparent,
+          rgb(24, 22, 134)
+        );
+        border: 1px solid rgb(24, 22, 134);
+        border-radius: 10px;
+        color: aliceblue;
+      }
+      form button:hover {
+        background-image: linear-gradient(
+          to left,
+          transparent,
+          rgb(24, 22, 134)
+        );
+      }
+
+      section h1 {
+        margin-top: 50px;
+        padding: 5px;
+      }
+      section p {
+        padding: 5px;
+      }
+      section {
+        margin: 0 auto;
+      }
+      section {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        /* background-color: white aqua; */
+      }
+      .map-grid {
+        display: grid;
+        width: 60vw;
+        padding: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+      }
+
+      .top-text {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        background-color: black;
+        color: white;
+        p {
+          text-align: center;
+        }
+        input {
+          position: absolute;
+          right: 10px;
+          background-color: black;
+          color: white;
+        }
+      }
+      .sidemenu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+          padding: 5px 8px;
+          margin-inline: 5px;
+          background-color: white;
+          border: 1px solid black;
+          border-radius: 15px;
+        }
+      }
+      .card-cont {
+        display: flex;
+        margin-top: 50px;
+        flex-direction: row;
+        justify-content: space-around;
+        /* background-color: bisque; */
+      }
+      .sub_lower {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1rem;
+        gap: 15px;
+
+        span {
+          font-size: 1.8rem;
+          font-weight: 700;
+        }
+      }
+
+      .sec3 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 23vh;
+        width: 100%;
+        flex-wrap: wrap;
+
+        img {
+          margin-inline: 20px;
+          width: 100px;
+          height: 50px;
+        }
+      }
+      .sec4 {
+        padding: 5px;
+        h1 {
+          margin: 0;
+        }
+      }
+      .card {
+        max-width: 150px;
+        margin-inline: 20px;
+        img {
+          width: 100%;
+          object-fit: contain;
+          transition: all 0.5s ease;
+        }
+      }
+
+      .card img:hover {
+        transform: scale(1.1);
+      }
+
+      .search {
+        position: relative;
+      }
+
+      .opened-menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transition: all 0.5s ease-in;
+
+        height: 100vh;
+        width: 170px;
+        background-color: lightblue;
+        li {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          /* position: relative; */
+          align-items: start;
+          justify-content: space-between;
+          width: 100%;
+          padding: 10px;
+          div {
+            display: flex;
+            justify-content: space-between;
+
+            width: 100%;
+            input {
+              background-color: transparent;
+              border: none;
+            }
+          }
+          ul {
+            flex-direction: column;
+          }
+        }
+      }
+      .opened-menu.hidden1 {
+        left: -170px;
+      }
+      .submenu {
+        width: 100%;
+        height: 96px;
+        transition: all 0.5s ease-in;
+        overflow: hidden;
+        li {
+          width: 90%;
+          margin-left: 10%;
+          border-left: 1px solid gray;
+          /* background-color: rgb(110, 110, 161); */
+
+          align-content: flex-start;
+        }
+        li:hover {
+          background-color: rgb(114, 142, 151);
+        }
+      }
+      .submenu.hidden1 {
+        height: 0;
+      }
+      .search input {
+        position: absolute;
+        bottom: -20px;
+        right: 0;
+        height: 25px;
+        /* display: inline-block; */
+        border-radius: 12px;
+        border: 1px solid black;
+        /* padding: 10px; */
+        padding-left: 15px;
+      }
+      @media (min-width: 775px) {
+        :root {
+          font-size: 16px;
+        }
+        h1 {
+          font-size: Integral CF, sans-serif;
+        }
+        form {
+          max-width: 200px;
+        }
+        header {
+          height: 90vh;
+          align-items: center;
+          flex-direction: row;
+          padding-inline: 2rem;
+
+          .header_left,
+          .header_right {
+            width: 50%;
+            height: 50vh;
+          }
+          .header_right {
+            height: 80vh;
+          }
+        }
+        .search input {
+          bottom: 20%;
+          right: 40px;
+        }
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-text">
+      <p>Lorem ipsum dolor sit amet cons ectetur adipi sicing elit. Dolore</p>
+      <input type="button" value="X" />
+    </div>
+
+    <nav>
+      <div class="sidemenu">
+        <button id="sidemenu-btn">☰</button>
+        <ul class="opened-menu hidden1">
+          <li></li>
+          <li>
+            <div><span> shop</span><input type="button" value="▼" /></div>
+          </li>
+          <div class="submenu hidden">
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+          </div>
+          <li>about</li>
+          <li>contact</li>
+        </ul>
+        <img src="./logo111.png" alt="" />
+      </div>
+      <ul>
+        <li class="search">
+          <input type="text" class="hidden" /><a href="">🔍</a>
+        </li>
+        <li><a href="">🛒</a></li>
+        <li><a href="">🙍🏻‍♂️</a></li>
+      </ul>
+    </nav>
+    <header>
+      <div class="header_left">
+        <h1>Lorem ipsum dolor sitame conse ctetur</h1>
+        <h2>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis,
+          voluptas. adipisicing elit. Facilis, voluptas. adipisicing elit.
+          Facilis, voluptas.
+        </h2>
+        <form action="">
+          <button>shop now</button>
+        </form>
+        <div class="sub_lower">
+          <p><span>2000</span><br />Lorem ipsum dolor sit</p>
+          <p><span>4000</span><br />Lorem ipsum dolor sit</p>
+          <p><span>9000</span><br />Lorem ipsum dolor sit</p>
+        </div>
+      </div>
+      <div class="header_right"></div>
+    </header>
+    <!-- <section class="sec2">
+      
+    </section> -->
+    <section class="sec3">
+      <img src="./logo111.png" alt="" />
+      <img src="./logo111.png" alt="" />
+      <img src="./logo111.png" alt="" />
+      <img src="./logo111.png" alt="" />
+      <img src="./logo111.png" alt="" />
+    </section>
+    <section class="sec4">
+      <h1>Lorem ipsum dolor sit</h1>
+      <div class="card-cont">
+        <div class="card">
+          <img src="./flag1.png" alt="" />
+          <span>⭐⭐⭐⭐</span>
+          <span>4.0</span>
+          <p>Lorem ipsum</p>
+        </div>
+        <div class="card">
+          <img src="./flag1.png" alt="" />
+          <span>⭐⭐⭐⭐</span>
+          <span>4.0</span>
+          <p>Lorem ipsum</p>
+        </div>
+        <div class="card">
+          <img src="./flag1.png" alt="" />
+          <span>⭐⭐⭐⭐</span>
+          <span>4.0</span>
+          <p>Lorem ipsum</p>
+        </div>
+      </div>
+      <form style="width: 250px" action="#">
+        <button>view more</button>
+      </form>
+    </section>
+    <script>
+      let sidemenuBtn = document.querySelector("#sidemenu-btn");
+      let sidemenu = document.querySelector(".opened-menu");
+      let submenu = document.querySelector(".submenu");
+      let searchBtn = document.querySelector(".search a");
+      let submenuBtn = document.querySelectorAll("input")[1].closest("div");
+      sidemenuBtn.addEventListener("click", function (e) {
+        sidemenu.classList.remove("hidden1");
+      });
+      document.addEventListener("click", function (e) {
+        // console.log(e.target.closest(".opened-menu"));
+        if (
+          !e.target.closest(".opened-menu") &&
+          e.target.nodeName !== "BUTTON"
+        ) {
+          // console.log(true);
+          sidemenu.classList.add("hidden1");
+        }
+      });
+      document.querySelectorAll("form").forEach((ele) => {
+        ele.addEventListener("submit", (e) => {
+          e.preventDefault();
+        });
+      });
+      document.querySelectorAll("li a").forEach((ele) => {
+        ele.addEventListener("click", (e) => {
+          e.preventDefault();
+        });
+      });
+      searchBtn.addEventListener("click", function (e) {
+        document.querySelector(".search input").classList.remove("hidden");
+      });
+      document.addEventListener("click", function (e) {
+        // console.log(e.target.closest(".opened-menu"));
+        console.log(e.target.nodeName);
+        if (!e.target.closest(".search input") && e.target.nodeName !== "A") {
+          // console.log(true);
+          document.querySelector(".search input").classList.add("hidden");
+        }
+      });
+      submenuBtn.addEventListener("click", function (e) {
+        submenu.classList.toggle("hidden");
+      });
+      // sidemenuBtn.addEventListener("click", function (e) {
+      //   submenu.classList.remove("hidden1");
+      // });
+
+      // submenu.
+      console.log(submenuBtn);
+    </script>
+  </body>
+</html>

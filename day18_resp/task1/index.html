@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .grid-cont {
+      display: grid;
+      /*  grid-template-columns: repeat(3, 1fr);  Define 3 columns */
+      grid-template-areas:
+        "one two two"
+        "three three four"
+        "five six four";
+      gap: 5px;
+    }
+
+    .item {
+      min-height: 150px;
+      /* The width is now managed by the grid template */
+      min-width: 150px;
+    }
+    .color1 {
+      background-color: aqua;
+    }
+    .color2 {
+      background-color: rgb(255, 0, 200);
+    }
+    .color3 {
+      background-color: rgb(229, 255, 0);
+    }
+
+    .one1 {
+      grid-area: one;
+    }
+    .two1 {
+      grid-area: two;
+    }
+    .three1 {
+      grid-area: three;
+    }
+    .four1 {
+      grid-area: four;
+    }
+    .five1 {
+      grid-area: five;
+    }
+    .six1 {
+      grid-area: six;
+    }
+  </style>
+  <body>
+    <div class="grid-cont">
+      <div class="item one1 color1">1</div>
+      <div class="item two1 color2">2</div>
+      <div class="item three1 color2">3</div>
+      <div class="item four1 color3">4</div>
+      <div class="item five1 color1">5</div>
+      <div class="item six1 color1">6</div>
+    </div>
+  </body>
+</html>
